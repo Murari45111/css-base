@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple & Functional Website</title>
+<style>
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navigation styles */
+  nav {
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  nav a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Logo styles */
+  .logo {
+    float: left;
+    padding: 15px;
+  }
+  
+  /* Hero section */
+  .hero {
+    background-image: url('hero-background.jpg');
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+  }
+  
+  .hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  /* Content section */
+  .content {
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav>
+  <div class="logo">
+    <img src="data:image/png;base64,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" alt="Logo" height="50">
+  </div>
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <div class="dropdown">
+    <a href="#">Services</a>
+    <div class="dropdown-content">
+      <a href="#">Web Design</a>
+      <a href="#">Graphic Design</a>
+      <a href="#">SEO</a>
+    </div>
+  </div>
+  <a href="#">Contact</a>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Our Website</h1>
+    <p>We create beautiful and functional websites.</p>
+  </div>
+</section>
+
+<!-- Content Section -->
+<section class="content">
+  <h2>About Us</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis scelerisque diam, nec feugiat libero facilisis id. Aliquam erat volutpat. Donec id arcu sed erat ullamcorper ultricies. Quisque eu nunc lacus. Proin nec malesuada mi.</p>
+  
+  <h2>Our Services</h2>
+  <ul>
+    <li>Web Design</li>
+    <li>Graphic Design</li>
+    <li>SEO Optimization</li>
+  </ul>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2024 Simple & Functional Website. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+
